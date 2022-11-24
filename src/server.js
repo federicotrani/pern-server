@@ -1,7 +1,14 @@
 const express = require('express')
+const morgan = require('morgan')
+const taskRoutes = require('./routes/tasks.routes')
 
 const app = express()
 
-app.listen(3000)
+app.use(morgan('dev'))
+app.use(express.json())
 
-console.log('server listen on port 3000')
+app.use(taskRoutes)
+
+app.listen(4000)
+
+console.log('Server listen on port 4000')
